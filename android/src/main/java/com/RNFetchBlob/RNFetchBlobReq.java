@@ -192,6 +192,8 @@ public class RNFetchBlobReq extends BroadcastReceiver implements Runnable {
                     String key = it.nextKey();
                     req.addRequestHeader(key, headers.getString(key));
                 }
+                //added on 12th October 2022 by Zaki Pathan For Disable Visibility from Download Manager
+                req.setVisibleInDownloadsUi(false);
                 Context appCtx = RNFetchBlob.RCTContext.getApplicationContext();
                 DownloadManager dm = (DownloadManager) appCtx.getSystemService(Context.DOWNLOAD_SERVICE);
                 downloadManagerId = dm.enqueue(req);
